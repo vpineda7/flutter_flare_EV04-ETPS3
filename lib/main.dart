@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-          body: Container(color: Colors.black, child: Center(child: NavBar()))),
+          body: Container(color: Colors.black, child: Center(child: PaginaPrincipal()))),
     );
   }
 }
@@ -25,19 +25,24 @@ class MenuItem {
   final String name;
   final Color color;
   final double x;
-  MenuItem({this.name, this.color, this.x});
+  MenuItem( {required this.name, required this.color,required this.x});
 }
 
-class NavBarState extends State<NavBar> {
+class PaginaPrincipal extends StatefulWidget {
+  @override
+  State<PaginaPrincipal> createState() => _PaginaPrincipalState();
+}
+
+class _PaginaPrincipalState extends State<PaginaPrincipal> {
   List items = [
-    MenuItem(x: -1.0, name: 'house', color: Colors.lightBlue[100]),
+    MenuItem(x: -1.0, name: 'house', color: Colors.blue),
     MenuItem(x: -0.5, name: 'planet', color: Colors.purple),
     MenuItem(x: 0.0, name: 'camera', color: Colors.greenAccent),
     MenuItem(x: 0.5, name: 'heart', color: Colors.pink),
     MenuItem(x: 1.0, name: 'head', color: Colors.yellow),
   ];
 
-  MenuItem active;
+  late MenuItem active;
 
   @override
   void initState() {
@@ -50,7 +55,7 @@ class NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Container(
-      height: 80,
+      height: 70,
       color: Colors.black,
       child: Stack(
         children: [
@@ -100,3 +105,4 @@ class NavBarState extends State<NavBar> {
     );
   }
 }
+
